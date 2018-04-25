@@ -1,3 +1,4 @@
+#coding:utf-8
 from flask import render_template, url_for, redirect, request, flash
 from flask_login import login_required, current_user
 from . import manage
@@ -12,17 +13,17 @@ logging.basicConfig(level=logging.INFO)
 @manage.route('/change-password', methods = ['GET', 'POST'])
 @login_required
 def change_password():
-    form = ChangePasswordForm()
-    if form.validate_on_submit():
-        if current_user.verify_password(form.old_password.data):
-            current_user.password = form.password.data
-            db.session.add(current_user)
-            db.session.commit()
-            flash('密码修改成功')
-            return redirect(url_for('main.index'))
-        else:
-            flash('密码错误')
-    return render_template('manage/change_password.html', form=form)
+	form = ChangePasswordForm()
+	if form.validate_on_submit():
+		if current_user.verify_password(form.old_password.data):
+			current_user.password = form.password.data
+			db.session.add(current_user)
+			db.session.commit()
+			flash('密码修改成功')
+			return redirect(url_for('main.index'))
+		else:
+			flash('密码错误')
+	return render_template('manage/change_password.html', form=form)
 
 # 文章管理
 @manage.route('/blogs')

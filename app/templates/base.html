@@ -1,6 +1,6 @@
 {% extends "bootstrap/base.html" %}
 
-{% block title %}{% block page_title %}{% endblock %} - 嵇元凯的博客{% endblock%}
+{% block title %}{% block page_title %}{% endblock %} - Mch博客{% endblock%}
 
         {% block head %}
         {{ super() }}
@@ -36,12 +36,12 @@
                             </a>
                             <ul class="dropdown-menu">
                                 {% if current_user.is_administrator() %}
-                                <li><a href="{{ url_for('manage.create_blog') }}">创建日志</a></li> 
+                                <li><a href="{{ url_for('manage.create_blog') }}">创建日志</a></li>
                                 <li><a href="{{ url_for('manage.manage_blogs') }}">博客管理</a></li>
                                 {% endif %}
                                 <li><a href="{{ url_for('manage.manage_collections') }}">我的收藏</a></li>
                                 <li><a href="{{ url_for('manage.change_password') }}">修改密码</a></li>
-                                <li role="separator" class="divider"></li>                                              
+                                <li role="separator" class="divider"></li>
                                 <li><a href="{{ url_for('auth.logout') }}">注销用户</a></li>
                             </ul>
                         </li>
@@ -66,7 +66,7 @@
         </div>
         <div class="col-md-12 blog-footer">
             <footer class="footer">
-                <p>Powered by <a href="#">Jiyuankai</a>. Copyright © 2017.</p>
+                <p>Powered by <a href="#">Mchonghui</a>. Copyright © 2018.</p>
                 <p>All rights reserved.</p>
                 <p>
                     <a href="#">Back to top</a>
@@ -79,10 +79,10 @@
         {% block scripts %}
         {{ super() }}
         {{ moment.include_moment() }}
-        {{ moment.lang("zh-CN") }} 
+        {{ moment.lang("zh-CN") }}
         <script type="text/javascript">
         $(function (){
             $("[data-toggle='popover']").popover();
-        });        
+        });
         </script>
         {% endblock %}

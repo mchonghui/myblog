@@ -1,3 +1,4 @@
+#coding:utf-8
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField, TextAreaField, PasswordField
 from wtforms.validators import Required, EqualTo
@@ -5,11 +6,10 @@ from flask_pagedown.fields import PageDownField
 
 # 修改密码
 class ChangePasswordForm(FlaskForm):
-    old_password = PasswordField('旧密码', validators=[Required()])
-    password = PasswordField('新密码', validators=[
-        Required(), EqualTo('password2', message='两次输入密码不一致')])
-    password2 = PasswordField('确认密码', validators=[Required()])
-    submit = SubmitField('确认修改')
+	old_password = PasswordField('旧密码', validators=[Required()])
+	password = PasswordField('新密码', validators=[Required(), EqualTo('password2', message='两次输入密码不一致')])
+	password2 = PasswordField('确认密码', validators=[Required()])
+	submit = SubmitField('确认修改')
 
 # 创建/编辑博客
 class BlogForm(FlaskForm):

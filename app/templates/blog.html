@@ -8,8 +8,9 @@
 
 {% block page_content %}
 
-<div class="col-md-8 blog-post">    
-    <h2 class="blog-post-title">{% if blog.id == 998 %}{% else %}{{ blog.name }}{% endif %}</h2>
+<div class="col-md-8 blog-post">
+    <h2 class="blog-post-title">{% if blog.id == 998 %}<h2><strong>关于本站</strong></h2><br><p>本站后端使用Python3编写，基于<code>Flask</code>框架，并以<code>Jinja2</code>作为模板引擎。使用<code>MySQL</code>数据库。前端部分使用的是<code>bootstrap</code> CSS框架。<br>
+项目部署在阿里云，服务器操作系统为<code>Ubuntu 16.04</code>，使用<code>Gunicorn</code>处理动态请求，搭配<code>gevent</code>库实现异步响应。前端反向代理服务器使用<code>Nginx</code>。使用<code>Supervisor</code>监测守护进程。<br>{% else %}{{ blog.name }}{% endif %}</h2>
     {% if blog.id == 998 %}
     {% else %}
         {% include "_labels.html" %}
@@ -19,7 +20,7 @@
     <p class="lead blog-description">{{ moment(blog.create_at).format('LL hh:mm:ss') }}&nbsp;
         {% if current_user.is_authenticated %}
             {% if blog.is_collected(current_user) %}
-                <a href="{{ url_for('manage.disable_collect', id=blog.id, info='blog') }}"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span>&nbsp;取消收藏</a>&nbsp;  
+                <a href="{{ url_for('manage.disable_collect', id=blog.id, info='blog') }}"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span>&nbsp;取消收藏</a>&nbsp;
             {% else %}
                 <a href="{{ url_for('manage.enable_collect', id=blog.id, info='blog') }}"><span class="glyphicon glyphicon-heart-empty" aria-hidden="true"></span>&nbsp;收藏</a>&nbsp;
             {% endif %}
@@ -32,7 +33,7 @@
             {{ blog.summary_html | safe }}
         {% else %}
             {{ blog.summary  }}
-        {% endif %}     
+        {% endif %}
     </p>
     <hr>
     {% endif %}
@@ -41,7 +42,7 @@
             {{ blog.content_html | safe }}
         {% else %}
             {{ blog.content  }}
-        {% endif %}         
+        {% endif %}
     </p>
 </div>
 {% if blog.id != 998 %}
@@ -71,5 +72,5 @@
         </div>
     </div>
     {% endif %}
-{% endif %}   
+{% endif %}
 {% endblock %}

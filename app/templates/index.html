@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% import "_macros.html" as macros %}
 
-{% block title %}嵇元凯的博客{% endblock %}
+{% block title %}Mch博客{% endblock %}
 
 {% block index %}"active"{% endblock %}
 
@@ -15,7 +15,7 @@
                         {% include "_labels.html" %}
                         <h5></h5>
                         <p class="blog-post-meta" id="{{ blog.name }}">
-                            {{ moment(blog.create_at).format('LL') }} &nbsp;                        
+                            {{ moment(blog.create_at).format('LL') }} &nbsp;
                             <a href="{{ url_for('main.blog', id=blog.id) }}#comments">
                                 <span class="glyphicon glyphicon-comment" aria-hidden="true"></span>&nbsp;评论({{ blog.comments.count() }})
                             </a> &nbsp;
@@ -31,7 +31,7 @@
                         <hr>
                     </div>
                     {% endif %}
-                    {% endfor %}    
+                    {% endfor %}
                 </div>
                 <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
                     <div class="sidebar-module sidebar-module-inset">
@@ -40,10 +40,9 @@
                     </div>
                     <div class="sidebar-module">
                         <h4><b>关于我的</b></h4>
-                        <ol class="list-unstyled">                           
-                            <li><a href="https://github.com/jiyuankai/myblog" target="_blank">GitHub <img class="github" src="{{ url_for('static', filename='github.ico') }}"></a></li>
-                            <li><a href="http://blog.csdn.net/jyk920902" target="_blank">CSDN博客 <img class="github" src="{{ url_for('static', filename='csdn.ico') }}"></a></li>
-                            <li><a href="#">422925090@qq.com</a></li>
+                        <ol class="list-unstyled">
+                            <li><a href="https://github.com/mchonghui/myblog" target="_blank">GitHub <img class="github" src="{{ url_for('static', filename='github.ico') }}"></a></li>
+                            <li><a href="#">133043267@qq.com</a></li>
                         </ol>
                         <hr>
                         <h4><b>文章分类</b></h4>
@@ -53,7 +52,7 @@
                             <li><a href="{{ url_for('main.index', label=label.name)}}">{{ label.name }}({{ label.blogs.count() }})</a></li>
                             {% endfor %}
                         </ol>
-                    </div>               
+                    </div>
                 </div><!-- /.blog-sidebar -->
             </div><!-- /.row -->
 {% if pagination %}
